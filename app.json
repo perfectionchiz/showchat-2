@@ -1,0 +1,107 @@
+{
+  "expo": {
+    "name": "show-chats",
+    "slug": "show-chats",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/splash-image.png",
+    "scheme": "showchats",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.showchats.app",
+      "appleTeamId": "Y68FT97T8J",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "We look at device properties and ID for Vendor to identify your device, verify your login session, and prevent unauthorized account access."
+      }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "INTERNET"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#0b1220",
+        "foregroundImage": "./assets/images/splash-image.png",
+        "backgroundImage": "./assets/images/splash-image.png",
+        "monochromeImage": "./assets/images/splash-image.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.showchats.app",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "showchats",
+              "host": "verify-email"
+            },
+            {
+              "scheme": "showchats",
+              "host": "reset-password"
+            }
+          ]
+        }
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/splash-image.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-image.png",
+          "imageWidth": 200,
+          "resizeMode": "cover",
+          "backgroundColor": "#0b1220",
+          "dark": {
+            "backgroundColor": "#0b1220",
+            "image": "./assets/images/splash-image.png"
+          }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "We use your location to show you local live streams and content popular in your current city."
+        }
+      ],
+      "expo-font",
+      "@react-native-google-signin/google-signin",
+      "expo-web-browser",
+      "react-native-iap",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "We access your photos to let you choose a profile picture and upload images when creating or personalizing rooms in the app.",
+          "colors": {
+            "cropToolbarColor": "#000000"
+          },
+          "dark": {
+            "colors": {
+              "cropToolbarColor": "#000000"
+            }
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "5fe0ff3f-e0a8-4421-853d-5ead273b91a7"
+      }
+    },
+    "owner": "showchats"
+  }
+}
