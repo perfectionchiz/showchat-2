@@ -1,13 +1,13 @@
 import {
-    ChevronDown,
-    ChevronRight,
-    Database,
-    ExternalLink,
-    FileText,
-    Mail,
-    Scale,
-    ShieldAlert,
-    ShieldCheck,
+  ChevronDown,
+  ChevronRight,
+  Database,
+  ExternalLink,
+  FileText,
+  Mail,
+  Scale,
+  ShieldAlert,
+  ShieldCheck,
 } from "lucide-react-native";
 import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -30,7 +30,7 @@ export const PrivacyModalContent = () => {
         </View>
         <Text className="text-white text-2xl font-bold">Privacy Center</Text>
         <Text className="text-gray-300 text-center text-sm mt-2 px-6 leading-5">
-          At Shochats, we believe privacy is a fundamental right. Review our
+          At Showchats, we believe privacy is a fundamental right. Review our
           commitment to your security below.
         </Text>
       </View>
@@ -40,22 +40,24 @@ export const PrivacyModalContent = () => {
           <Text className="text-gray-300 uppercase text-[11px] font-bold mb-3 ml-1 tracking-widest">
             Security Infrastructure
           </Text>
-          <View className="bg-background border border-gray-800 rounded-2xl p-4 flex-row items-center">
-            <View className="bg-emerald-500/10 p-2.5 rounded-xl border border-gray-500">
-              <ShieldAlert size={22} color="#10b981" />
+          <View className="bg-background border border-gray-800 rounded-2xl p-4">
+            <View className=" flex-row items-center">
+              <View className="bg-emerald-500/10 p-2.5 rounded-xl border border-gray-500">
+                <ShieldAlert size={22} color="#10b981" />
+              </View>
+              <View className="ml-4 flex-1">
+                <Text className="text-white font-semibold text-[15px]">
+                  End-to-End Encryption
+                </Text>
+                <Text className="text-gray-300 text-xs mt-1 leading-4">
+                  Your private keys are generated and stored locally. Showchats
+                  servers act only as a secure relay for your encrypted data
+                  packets.
+                </Text>
+              </View>
             </View>
-            <View className="ml-4 flex-1">
-              <Text className="text-white font-semibold text-[15px]">
-                End-to-End Encryption
-              </Text>
-              <Text className="text-gray-300 text-xs mt-1 leading-4">
-                Your private keys are generated and stored locally. Shochats
-                servers act only as a secure relay for your encrypted data
-                packets.
-              </Text>
-            </View>
-            <View className="bg-emerald-500/20 px-2 py-1 rounded">
-              <Text className="text-green-500 text-[10px] font-black">
+            <View className="bg-emerald-500/20 px-2 flex-row justify-end w-[70px] ml-auto py-1 rounded">
+              <Text className="text-green-500 text-[10px]  font-black">
                 ACTIVE
               </Text>
             </View>
@@ -126,8 +128,8 @@ export const PrivacyModalContent = () => {
                 <View className="h-[1px] bg-gray-800 mb-4" />
                 <Text className="text-gray-300 text-xs leading-5 mb-4">
                   Our Privacy Policy explains how we treat your personal data
-                  and protect your privacy when you use Shochats. By using our
-                  services, you agree that Shochats can use such data in
+                  and protect your privacy when you use Showchats. By using our
+                  services, you agree that Showchats can use such data in
                   accordance with our policies.
                 </Text>
                 <Text className="text-gray-300 text-xs leading-5">
@@ -162,12 +164,12 @@ export const PrivacyModalContent = () => {
                 </Text>
                 <Text className="text-gray-400 text-xs leading-5 mb-4">
                   You are responsible for keeping your device and your account
-                  safe and secure. You may not use Shochats to distribute
+                  safe and secure. You may not use Showchats to distribute
                   malware, engage in harassment, or facilitate illegal
                   transactions.
                 </Text>
                 <Text className="text-gray-400 text-xs leading-5">
-                  Shochats is provided &rdquo;as is&rdquo; without any express
+                  Showchats is provided &rdquo;as is&rdquo; without any express
                   or implied warranties. We do not guarantee that our services
                   will always be functional or free of errors, though we strive
                   for maximum uptime.
@@ -186,7 +188,7 @@ export const PrivacyModalContent = () => {
             <View className="ml-4 flex-1">
               <Text className="text-white font-medium">Privacy Support</Text>
               <Text className="text-gray-400 text-xs">
-                privacy@shochats.com
+                privacy@showchats.com
               </Text>
             </View>
             <ExternalLink size={16} color="#475569" />

@@ -1,10 +1,12 @@
 import { UserAvatar } from "@/components/chat/UserAvatar";
+import { Button } from "@/components/common/Button";
 import { IconButton } from "@/components/common/IconButton";
 import { BaseModal } from "@/components/ui/BaseModal";
 import EmptyState from "@/components/ui/EmptyState";
 import SkeletonCircle from "@/components/ui/skeleton/SkeletonCircle";
 import SkeletonText from "@/components/ui/skeleton/SkeletonText";
 import { Text } from "@/components/ui/Text";
+import { PRIMARY_COLOR } from "@/constants/constants";
 import { FriendList as FriendListData } from "@/models/friends.model";
 import { getInitials } from "@/utils/getInitials";
 import { Ionicons } from "@expo/vector-icons";
@@ -71,10 +73,25 @@ export function FriendList({
                   Invite your friends
                 </Text>
 
-                <Text className="text-zinc-300 text-[13px] leading-5 mt-1">
-                  Share invitation link to friends on your social platforms
-                  today.
-                </Text>
+                <View>
+                  <Text className="text-zinc-300 text-[13px] leading-5 mt-1">
+                    Share invitation link to friends on your social platforms
+                    todays.
+                  </Text>
+                  {friends.length !== 0 ? (
+                    <Button
+                      onPress={() => onInvite?.()}
+                      textStyles={{ color: PRIMARY_COLOR }}
+                      className="h-6 px-0  justify-end"
+                      isLoading={isPendingInvite}
+                      icon={
+                        <Ionicons name="link" color={PRIMARY_COLOR} size={17} />
+                      }
+                    >
+                      Invite friends
+                    </Button>
+                  ) : null}
+                </View>
               </View>
             </View>
           </View>

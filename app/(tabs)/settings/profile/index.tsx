@@ -93,8 +93,6 @@ export default function Profile() {
               setOpen={() => setIsFriendlistOpen(true)}
               loading={isProfileLoading}
               friendList={friendlist?.friends ?? []}
-              onInvite={sendInvite}
-              isPendingInvite={isPending}
             />
             <UserInfoCard
               username={profile?.username}
