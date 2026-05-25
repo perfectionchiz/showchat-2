@@ -6,7 +6,6 @@ import { useRegisterPushToken } from "@/hooks/notification/useRegisterPushNotifi
 import { useGetProfile } from "@/hooks/profile/useGetUserProfile";
 import { queryClient } from "@/lib/queryClient";
 import { useAuthStore } from "@/store/authStore";
-import { fetchClientMetadata } from "@/utils/getClientMetadata";
 import {
   DMSans_300Light,
   DMSans_400Regular,
@@ -45,13 +44,6 @@ function AppContent() {
     }
   }, [session]);
 
-  useEffect(() => {
-    const init = async () => {
-      const data: any = await fetchClientMetadata();
-      setMetadata(data);
-    };
-    init();
-  }, [setMetadata]);
   return (
     <RouteGuard
       onboardingComplete={onboardingComplete}

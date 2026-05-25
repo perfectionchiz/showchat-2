@@ -12,7 +12,7 @@ import { Text } from "@/components/ui/Text";
 
 import { PRIMARY_COLOR } from "@/constants/constants";
 import { useSignIn } from "@/hooks/auth/useSignIn";
-import { useAuthStore } from "@/store/authStore";
+import { fetchClientMetadata } from "@/utils/getClientMetadata";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Yup from "yup";
 
@@ -25,7 +25,6 @@ const LoginSchema = Yup.object().shape({
 
 export default function LoginScreen() {
   const signInMutation = useSignIn();
-  const { metadata } = useAuthStore();
   const insets = useSafeAreaInsets();
   return (
     <FormWrapper
@@ -36,13 +35,14 @@ export default function LoginScreen() {
       initialValues={{ email: "", password: "" }}
       validationSchema={LoginSchema}
       onSubmit={async (values) => {
+        const freshMetadata = await fetchClientMetadata(true);
         signInMutation.mutateAsync({
           ...values,
-          userAgent: metadata?.userAgent || "Unknown Device",
-          ipAddress: metadata?.ipAddress || "0.0.0.0",
-          location: metadata?.location || "0.0.0.0",
-          deviceFingerprint: metadata?.deviceFingerprint || "mobile-dev",
-          deviceType: metadata?.deviceType || "mobile",
+          userAgent: freshMetadata.userAgent,
+          ipAddress: freshMetadata.ipAddress,
+          location: freshMetadata.location,
+          deviceFingerprint: freshMetadata.deviceFingerprint,
+          deviceType: freshMetadata.deviceType,
         });
       }}
     >
