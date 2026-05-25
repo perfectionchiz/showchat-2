@@ -11,7 +11,7 @@ const badgeMap: Record<string, any> = {
   night_owl: require("@/assets/images/badges/badge-6.webp"),
   commenter: require("@/assets/images/badges/badge-6.webp"),
   creator: require("@/assets/images/badges/badge-7.webp"),
-  influencer: require("@/assets/images/badges/badge-7.webp"),
+  devotee: require("@/assets/images/badges/badge-7.webp"),
   top_fan: require("@/assets/images/badges/badge-8.png"),
   veteran: require("@/assets/images/badges/badge-8.png"),
   supporter: require("@/assets/images/badges/badge-9.webp"),
