@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Mail } from "lucide-react-native";
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 
 import { Button } from "@/components/common/Button";
@@ -26,6 +26,7 @@ const LoginSchema = Yup.object().shape({
 export default function LoginScreen() {
   const signInMutation = useSignIn();
   const insets = useSafeAreaInsets();
+  const [isFetchingLocation, setIsFetchingLocation] = useState(false);
   return (
     <FormWrapper
       containerStyle={{ paddingTop: insets.top }}
@@ -35,15 +36,20 @@ export default function LoginScreen() {
       initialValues={{ email: "", password: "" }}
       validationSchema={LoginSchema}
       onSubmit={async (values) => {
-        const freshMetadata = await fetchClientMetadata(true);
-        signInMutation.mutateAsync({
-          ...values,
-          userAgent: freshMetadata.userAgent,
-          ipAddress: freshMetadata.ipAddress,
-          location: freshMetadata.location,
-          deviceFingerprint: freshMetadata.deviceFingerprint,
-          deviceType: freshMetadata.deviceType,
-        });
+        setIsFetchingLocation(true);
+        try {
+          const freshMetadata = await fetchClientMetadata(true);
+          await signInMutation.mutateAsync({
+            ...values,
+            userAgent: freshMetadata.userAgent,
+            ipAddress: freshMetadata.ipAddress,
+            location: freshMetadata.location,
+            deviceFingerprint: freshMetadata.deviceFingerprint,
+            deviceType: freshMetadata.deviceType,
+          });
+        } finally {
+          setIsFetchingLocation(false);
+        }
       }}
     >
       {({
@@ -94,8 +100,8 @@ export default function LoginScreen() {
             Forgot your password?
           </Button>
           <Button
-            disabled={signInMutation.isPending}
-            isLoading={signInMutation.isPending}
+            disabled={isFetchingLocation || signInMutation.isPending}
+            isLoading={isFetchingLocation || signInMutation.isPending}
             textVariant="bold"
             style={{ backgroundColor: PRIMARY_COLOR }}
             onPress={() => handleSubmit()}
