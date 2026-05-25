@@ -31,7 +31,11 @@ export default function FallbackImage({
       contentFit={props.contentFit || "cover"}
       transition={200}
       cachePolicy="none"
-      onError={() => setHasError(true)}
+      onError={(err) => {
+        console.log(err, "image err");
+
+        setHasError(true);
+      }}
     />
   );
 }
